@@ -10,7 +10,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.stonepaperscissors.game.data.ItemsGame
+import com.example.stonepaperscissors.game.ui.data.ItemsGame
 
 @Composable
 fun GameScreen(gameViewModel: GameViewModel) {
@@ -25,6 +25,7 @@ fun GameScreen(gameViewModel: GameViewModel) {
             start.linkTo(parent.start)
             top.linkTo(parent.top)
             end.linkTo(parent.end)
+            bottom.linkTo(btnStone.top)
         }.padding(top = 12.dp), text = resultGame)
 
         Button(modifier = Modifier.constrainAs(btnStone) {
@@ -33,7 +34,7 @@ fun GameScreen(gameViewModel: GameViewModel) {
             start.linkTo(parent.start)
             end.linkTo(btnPaper.start)
         }, onClick = { gameViewModel.onItemSelected(ItemsGame.Stone) }) {
-            Text(text = "piedra")
+            Text(text = "Piedra")
         }
 
         Button(modifier = Modifier.constrainAs(btnPaper) {
@@ -42,7 +43,7 @@ fun GameScreen(gameViewModel: GameViewModel) {
             start.linkTo(btnStone.end)
             end.linkTo(btnScissors.start)
         }, onClick = { gameViewModel.onItemSelected(ItemsGame.Paper) }) {
-            Text(text = "papel")
+            Text(text = "Papel")
         }
 
         Button(modifier = Modifier.constrainAs(btnScissors) {
@@ -51,7 +52,7 @@ fun GameScreen(gameViewModel: GameViewModel) {
             start.linkTo(btnPaper.end)
             end.linkTo(parent.end)
         }, onClick = { gameViewModel.onItemSelected(ItemsGame.Scissors) }) {
-            Text(text = "tijera")
+            Text(text = "Tijeras")
         }
 
 
