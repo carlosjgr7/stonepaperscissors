@@ -9,9 +9,9 @@ class CheckResultGame @Inject constructor(
     val getMachineSelected: GetMachineSelected,
     val checkOnWins: CheckOnPlayerWins
 ) {
-    operator fun invoke(selected: OnWin): String {
+    operator fun invoke(selected: ItemsGame): String {
         return (checkOnWins(
-            selected.GetItemsGame(),
+            selected,
             getMachineSelected()
         ))
     }

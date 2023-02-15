@@ -10,7 +10,7 @@ class CheckOnPlayerWins @Inject constructor() {
         return when (
             resolvergame(player1, player2)
         ) {
-            GameStatus.Looser -> "Perdiste la partida el rival saco ${player2.name}"
+            GameStatus.Looser -> "You lose rival has ${player2.name}"
             GameStatus.Winner -> "Ganaste la partida el rival saco ${player2.name}"
             GameStatus.Tie -> "Empate"
         }
@@ -18,10 +18,10 @@ class CheckOnPlayerWins @Inject constructor() {
 
     private fun resolvergame(player1: ItemsGame, player2: ItemsGame): GameStatus {
         Log.i("Contenedor", player1.listofCanWin.toList().toString())
-        Log.i("Contenedor", player1.name)
+        Log.i("Contenedor", player1.name.toString())
 
         if (player1 == player2) return GameStatus.Tie
-        if (player1.listofCanWin.contains(player2)) return GameStatus.Winner
+        if (player1.listofCanWin.contains(player2.name)) return GameStatus.Winner
         return GameStatus.Looser
     }
 }
